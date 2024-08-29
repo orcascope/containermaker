@@ -1,0 +1,65 @@
+# Use the official Python base image
+FROM python:3.9-slim
+
+# Set environment variables to avoid interactive prompts during installations
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Set the working directory
+WORKDIR /home/pydata/work
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    wget \
+    git \
+    libpq-dev \
+    libmariadb-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libffi-dev \
+    default-jre \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python libraries
+RUN pip install --no-cache-dir \
+    jupyterlab \
+    pandas \
+    numpy \
+    matplotlib \
+    seaborn \
+    scikit-learn \
+    tensorflow \
+    torch \
+    xgboost \
+    lightgbm \
+    dask \
+    statsmodels \
+    plotly \
+    openpyxl \
+    pyarrow \
+    sqlalchemy \
+    psycopg2-binary \
+    requests \
+    beautifulsoup4 \
+    lxml \
+    duckdb \
+    polars \
+    pyspark \
+    dremio-simple-query \
+    boto3 \
+    s3fs \
+    minio
+
+# Expose port for Jupyter Notebook
+EXPOSE 8888
+
+# Create a new user with home directory
+RUN useradd -ms /bin/bash pydata && \
+    chown -R pydata:pydata /home/pydata
+
+# Switch to the newly created user
+USER pydata
+
+# Run Jupyter Notebook with no token and allow root access
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''"]
