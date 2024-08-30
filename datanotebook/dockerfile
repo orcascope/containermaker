@@ -67,4 +67,4 @@ RUN useradd -ms /bin/bash pydata && \
 USER pydata
 
 # Run Jupyter Notebook with no token and allow root access
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--no-browser", "--NotebookApp.token=''"]
