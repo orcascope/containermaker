@@ -51,6 +51,11 @@ RUN pip install --no-cache-dir \
     s3fs \
     minio
 
+# Install notebook
+RUN pip install --no-cache-dir \
+    notebook \
+    ibis  # Add this line
+
 # Expose port for Jupyter Notebook
 EXPOSE 8888
 
