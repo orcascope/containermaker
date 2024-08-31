@@ -54,7 +54,14 @@ RUN pip install --no-cache-dir \
 # Install notebook
 RUN pip install --no-cache-dir \
     notebook \
-    ibis  # Add this line
+    ibis \
+    pyiceberg[gcsfs,adlfs,s3fs,sql-sqlite,sql-postgres,glue,hive] \
+    getdaft[all]
+
+# Even More Libraries
+RUN pip install --no-cache-dir \
+    datafusion \
+    sqlframe[all]
 
 # Expose port for Jupyter Notebook
 EXPOSE 8888

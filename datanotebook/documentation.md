@@ -7,7 +7,7 @@ This Docker image provides a Python environment with a wide range of data scienc
 - **Base Image**: `python:3.9-slim`
 - **Notebook Access**: Jupyter Notebook accessible via a web browser
 - **Pre-installed Libraries**:
-  - Data manipulation: `pandas`, `numpy`, `polars`, `dask`,`ibis`
+  - Data manipulation: `pandas`, `numpy`, `polars`, `dask`,`ibis`, `datafusion`
   - Machine learning: `scikit-learn`, `tensorflow`, `torch`, `xgboost`, `lightgbm`
   - Visualization: `matplotlib`, `seaborn`, `plotly`
   - Database access: `psycopg2-binary`, `mysqlclient`, `sqlalchemy`, `duckdb`, `pyarrow`

@@ -16,7 +16,7 @@ The `alexmerced/spark35nb` Docker image provides an environment for data enginee
 
 This image comes with a wide range of pre-installed Python libraries, including but not limited to:
 
-- **Data Manipulation**: `pandas`, `numpy`, `dask`, `polars`
+- **Data Manipulation**: `pandas`, `numpy`, `dask`, `polars`, `datafusion`
 - **Machine Learning**: `scikit-learn`, `tensorflow`, `torch`, `xgboost`, `lightgbm`
 - **Data Visualization**: `matplotlib`, `seaborn`, `plotly`
 - **Big Data Tools**: `pyspark`, `pyarrow`, `ibis-framework`, `duckdb`, `sqlframe`

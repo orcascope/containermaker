@@ -65,6 +65,14 @@ RUN pip install --no-cache-dir \
     s3fs \
     minio
 
+# more libraries
+RUN pip install --no-cache-dir \
+    pyiceberg[gcsfs,adlfs,s3fs,sql-sqlite,sql-postgres,glue,hive]
+
+# Even More Libraries
+RUN pip install --no-cache-dir \
+    datafusion
+
 # Expose Jupyter Notebook port
 EXPOSE 8888
 
