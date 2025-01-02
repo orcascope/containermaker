@@ -99,7 +99,11 @@ WORKDIR /workspace
 ENV SPARK_HOME=/opt/spark
 ENV PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin:$PATH
 
+# Set umask globally by adding it to the entrypoint
+RUN echo "umask 000" >> /etc/profile
+
 # Start Spark Master, Worker, and JupyterLab
-CMD $SPARK_HOME/sbin/start-master.sh && \
+CMD bash -c "source /etc/profile && \
+    $SPARK_HOME/sbin/start-master.sh && \
     $SPARK_HOME/sbin/start-worker.sh spark://$(hostname):7077 && \
-    jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+    jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''"
